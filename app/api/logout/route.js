@@ -1,0 +1,20 @@
+import { NextResponse } from "next/server";
+export async function GET(request) {
+    try {
+        const response = NextResponse.json({
+            message:"logout true",
+            success: true
+        })
+        response.cookies.set("user", null, {
+            expires: new Date(Date.now())
+        })
+        return response;
+    }
+    catch (error) {
+        console.log(error)
+        return NextResponse.json({
+            message:"api error",
+            success:false
+        })
+    }
+}
