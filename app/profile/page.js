@@ -12,7 +12,7 @@ const page = () => {
     // ankit().then((Response)=> {setdata(Response)})
     // console.log(`in side of function ${data}`)
 
- fetch('http://localhost:3000/api/findtask').then(Response => Response.json())
+ fetch('https://todo-beta-indol.vercel.app/api/findtask').then(Response => Response.json())
 .then(data => setdata(data.alltask))
 .then(console.log(data))
 
