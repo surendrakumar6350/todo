@@ -10,7 +10,7 @@ const page = () => {
     ankit().then((Response)=> {setdata(Response)})
   }
 useEffect(rahul,[])
-
+console.log(data)
   return (
     <>
 <Nav/>

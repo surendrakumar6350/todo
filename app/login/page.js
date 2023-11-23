@@ -22,7 +22,9 @@ const page = () => {
             toast("password is too short")
         }
         else {
+            console.log("hjii")
         const result = await loginapi(data);
+        console.log(result)
         if(result.message == "email not found") {
             toast("email not found")
         }
@@ -30,8 +32,10 @@ const page = () => {
             toast("password not matched")
         }
         else if (result.success === true) {
-            toast("true login")
-           router.push("/tasks")
+            toast("login successful")
+            await  setTimeout(()=>{
+                window.location.reload()
+              }, 1000) 
         }
         else if(result.success === false) {
             toast("failed to login")

@@ -23,7 +23,10 @@ const page = () => {
   const logout = async ()=> {
    const result = await  logoutw();
    if(result.data.success) {
-    router.push("/login")
+    toast("logout successful")
+  await  setTimeout(()=>{
+      window.location.reload()
+    }, 1000) 
    }
    else {
     toast("error in logout")
