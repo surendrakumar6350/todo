@@ -1,16 +1,13 @@
 "use client"
 import React, { useEffect, useState } from 'react'
 import ankit from '@/helper/findingtasks/find'
-import { name } from '../api/findname/printname'
 import Nav from '@/Components/Nav'
 import Footer from '@/Components/Footer'
 
 const page = () => {
   const [data, setdata] = useState([]);
-  const [naam, setnaam] = useState("");
   const rahul =  ()=> {
     ankit().then((Response)=> {setdata(Response)})
-    name().then((Response)=> {setnaam(Response)})
   }
 useEffect(rahul,[])
 
@@ -31,7 +28,7 @@ useEffect(rahul,[])
 
         <div className="profile-user-settings">
 
-            <h1 className="profile-user-name">{naam}</h1>
+            <h1 className="profile-user-name">ankit jangir</h1>
 
             <button className="btn profile-edit-btn">Edit Profile</button>
 
