@@ -3,7 +3,6 @@ import React from 'react'
 import Nav from '@/Components/Nav'
 import Footer from '@/Components/Footer'
 import { useRouter } from 'next/navigation'
-import { logoutw } from '@/helper/logout/logoutfunction'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -21,16 +20,19 @@ const page = () => {
   }
 
   const logout = async ()=> {
-   const result = await  logoutw();
-   if(result.data.success) {
-    toast("logout successful")
-  await  setTimeout(()=>{
-      window.location.reload()
-    }, 1000) 
-   }
-   else {
-    toast("error in logout")
-   }
+
+    try{
+      document.cookie = await `user=null; expires=${new Date(Date.now())};`
+      toast("logout successful")
+      await  setTimeout(()=>{
+        window.location.reload()
+      }, 1000)
+    }
+catch (error) {
+  console.log(error)
+  toast("error in logout")
+}
+ 
   }
 
   return (
