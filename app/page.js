@@ -19,22 +19,6 @@ const page = () => {
     router.push("/login")
   }
 
-  const logout = async ()=> {
-
-    try{
-      document.cookie = await `user=null; expires=${new Date(Date.now())};`
-      toast("logout successful")
-      await  setTimeout(()=>{
-        window.location.reload()
-      }, 1000)
-    }
-catch (error) {
-  console.log(error)
-  toast("error in logout")
-}
- 
-  }
-
   return (
    <>
    <Nav/>
@@ -45,7 +29,6 @@ catch (error) {
         <button onClick={clicked}>Get Started</button>
         <button onClick={sig}>Sign Up</button>
         <button onClick={log}>Log In</button>
-        <button onClick={logout}>log Out</button>
     </section>
    <Footer/>
    </>

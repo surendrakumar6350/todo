@@ -3,19 +3,46 @@ import React, { useEffect, useState } from 'react'
 import ankit from '@/helper/findingtasks/find'
 import Nav from '@/Components/Nav'
 import Footer from '@/Components/Footer'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const page = () => {
   const [data, setdata] = useState([]);
   const rahul =  ()=> {
-    ankit().then((Response)=> {setdata(Response)})
+    // ankit().then((Response)=> {setdata(Response)})
+    // console.log(`in side of function ${data}`)
+
+ fetch('http://localhost:3000/api/findtask').then(Response => Response.json())
+.then(data => setdata(data.alltask))
+.then(console.log(data))
+
+
   }
 useEffect(rahul,[])
-console.log(data)
+console.log(`out side of function ${data}`)
+
+
+
+const logout = async()=> {
+  try{
+    document.cookie = await `user=null; expires=${new Date(Date.now())};`
+    toast("logout successful")
+    await  setTimeout(()=>{
+      window.location.reload()
+    }, 1000)
+  }
+catch (error) {
+console.log(error)
+toast("error in logout")
+}
+
+}
+
   return (
     <>
 <Nav/>
 <header>
-
+<ToastContainer/>
 <div className="container">
 
     <div className="profile">
@@ -30,9 +57,7 @@ console.log(data)
 
             <h1 className="profile-user-name">ankit jangir</h1>
 
-            <button className="btn profile-edit-btn">Edit Profile</button>
-
-            <button className="btn profile-settings-btn" aria-label="profile settings"><i className="fas fa-cog" aria-hidden="true"></i></button>
+            <button onClick={logout} className="btn profile-edit-btn">Log Out</button>
 
         </div>
 
@@ -58,10 +83,10 @@ console.log(data)
 
 
   {data?.map((e)=> {
-    return <div className="info-bar">
-    <div>
-      <h2>{e.title}</h2>
-      <p>{e.text}</p>
+    return <div className="info-bar" key={e._id + "1"} >
+    <div key={e._id + "2"}>
+      <h2 key={e._id + "3"}>{e.title}</h2>
+      <p key={e._id + "4"}>{e.text}</p>
     </div>
   </div>
 
