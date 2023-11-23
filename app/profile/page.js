@@ -8,7 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const page = () => {
   const [data, setdata] = useState([]);
-  const rahul =  async ()=> {
+  const rahul =  ()=> {
     // ankit().then((Response)=> {setdata(Response)})
     // console.log(`in side of function ${data}`)
 
