@@ -6,6 +6,7 @@ import { connectdb } from "@/helper/md";
 
 export async function GET(request) {
     try {
+        console.log("api fired")
 const coo = cookies();
 const result = coo.get('user')
 const id =  result.value;
