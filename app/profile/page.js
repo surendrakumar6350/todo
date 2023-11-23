@@ -8,7 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const page = () => {
   const [data, setdata] = useState([]);
-  const rahul =  ()=> {
+  const rahul =  async ()=> {
     // ankit().then((Response)=> {setdata(Response)})
     // console.log(`in side of function ${data}`)
 
@@ -19,8 +19,8 @@ const page = () => {
 
   }
 useEffect(rahul,[])
+setTimeout(rahul,5000)
 console.log(`out side of function ${data}`)
-
 
 
 const logout = async()=> {
