@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import {cookies} from 'next/headers'
+// import {cookies} from 'next/headers'
 import { task } from "@/helper/schema";
 import { connectdb } from "@/helper/md";
 
@@ -7,11 +7,9 @@ import { connectdb } from "@/helper/md";
 export async function GET(request) {
     try {
         console.log("api fired")
-const coo = await cookies();
-const result = await coo.get('user')
-const id =  result.value;
+const usercookie = await request.cookies.user;
 await connectdb();
-const alltask = await task.find({userid: id})
+const alltask = await task.find({userid: usercookie})
 return NextResponse.json({
     alltask
 })

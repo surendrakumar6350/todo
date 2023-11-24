@@ -4,22 +4,14 @@ import Nav from '@/Components/Nav'
 import Footer from '@/Components/Footer'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { httpAxios } from '@/helper/httpAxios';
 
-const page = () => {
-  const [data, setdata] = useState([]);
-  const rahul =  ()=> {
-    // ankit().then((Response)=> {setdata(Response)})
-    // console.log(`in side of function ${data}`)
-
- fetch('https://todo-beta-indol.vercel.app/api/findtask').then(Response => Response.json())
-.then(data => setdata(data.alltask))
-.then(console.log(data))
-
-
-  }
-useEffect(rahul,[])
-console.log(`out side of function ${data}`)
-
+const page =  () => {
+const [data, setdata] = useState([])
+const findingUserTasks =  ()=> {
+const userTasks = fetch("https://todo-beta-indol.vercel.app/api/findtask").then((Response)=> Response.json()).then((result)=> setdata(result.alltask))
+}
+useEffect(findingUserTasks,[])
 
 const logout = async()=> {
   try{
