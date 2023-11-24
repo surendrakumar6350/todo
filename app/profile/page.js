@@ -18,7 +18,6 @@ const page = () => {
 
   }
 useEffect(rahul,[])
-setTimeout(rahul,5000)
 console.log(`out side of function ${data}`)
 
 

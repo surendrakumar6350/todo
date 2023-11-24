@@ -7,8 +7,8 @@ import { connectdb } from "@/helper/md";
 export async function GET(request) {
     try {
         console.log("api fired")
-const coo = cookies();
-const result = coo.get('user')
+const coo = await cookies();
+const result = await coo.get('user')
 const id =  result.value;
 await connectdb();
 const alltask = await task.find({userid: id})
