@@ -7,9 +7,10 @@ import { connectdb } from "@/helper/md";
 export async function GET(request) {
     try {
         console.log("api fired")
-const usercookie = await request.cookies.user;
+const usercookie = await request.cookies.get("user");
+const userid = usercookie.value;
 await connectdb();
-const alltask = await task.find({userid: usercookie})
+const alltask = await task.find({userid: userid})
 return NextResponse.json({
     alltask
 })

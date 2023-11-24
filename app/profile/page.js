@@ -15,7 +15,7 @@ useEffect(findingUserTasks,[])
 
 const logout = async()=> {
   try{
-    document.cookie = await `user=null; expires=${new Date(Date.now())};`
+    await httpAxios.get("/api/logout")
     toast("logout successful")
     await  setTimeout(()=>{
       window.location.reload()

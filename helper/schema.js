@@ -1,17 +1,14 @@
-import mongoose, {Schema} from "mongoose";
+import mongoose, { Schema } from "mongoose";
 
 const UserSchema = new Schema({
     title: {
         type: String,
-        requird: true
     },
     text: String,
     userid: {
-       type:  mongoose.Schema.Types.ObjectId,
-       ref: "signups",
-       requird : true
-    }
-
+         type: Schema.Types.ObjectId,
+          ref: 'signup'
+         }
 });
 
 export const task = mongoose.models.tasks || mongoose.model("tasks", UserSchema);
