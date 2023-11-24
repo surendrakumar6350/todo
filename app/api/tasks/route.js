@@ -1,17 +1,15 @@
 import { connectdb } from "@/helper/md";
 import { task } from "@/helper/schema";
 import { NextResponse } from "next/server";
-import {cookies} from 'next/headers'
 export async function POST(request) {
     try {
 connectdb();
-const mil = cookies();
-    const result = mil.get('user')
+const userkiid = request.cookies.user;
 const {title, text} = await request.json();
 const newtask = new task({
     title,
     text,
-    userid: result.value
+    userid: userkiid
 })
 const ohk = await newtask.save();
 console.log(ohk)
