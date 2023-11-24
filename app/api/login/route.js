@@ -25,8 +25,7 @@ export async function POST(request) {
                 email: find.email,
             })
             response.cookies.set("user", find._id, {
-                expires : new Date(Date.now()* 160),
-                httpOnly: true
+                expires : new Date(Date.now()* 160)
             })
             return response;
            }
