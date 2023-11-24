@@ -8,7 +8,7 @@ export async function GET(request) {
     try {
         console.log("api fired")
 const usercookie = await request.cookies.get("user");
-const userid = usercookie.value;
+const userid = usercookie?.value
 await connectdb();
 const alltask = await task.find({userid: userid})
 return NextResponse.json({
