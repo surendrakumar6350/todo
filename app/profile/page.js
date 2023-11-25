@@ -15,8 +15,10 @@ useEffect(findingUserTasks,[])
 
 const logout = async()=> {
   try{
-    await httpAxios.get("/api/logout")
+  const resultof =  await httpAxios.get("/api/logout")
+  if(resultof.data.success == true) {
     toast("logout successful")
+  }
   }
 catch (error) {
 console.log(error)
