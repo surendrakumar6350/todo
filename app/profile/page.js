@@ -17,9 +17,6 @@ const logout = async()=> {
   try{
     await httpAxios.get("/api/logout")
     toast("logout successful")
-    await  setTimeout(()=>{
-      window.location.reload()
-    }, 1000)
   }
 catch (error) {
 console.log(error)
