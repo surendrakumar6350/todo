@@ -28,7 +28,7 @@ else {
         title:"",
         text:""
       });
-      toast("task created");
+      toast(`posted ${task.title}`);
     }
   }
   }

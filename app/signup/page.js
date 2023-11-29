@@ -34,7 +34,7 @@ export const page =  () => {
         toast("failed to create")
       }
       else if( ress === true) {
-        toast("user created now you can login")
+        toast("signup successful")
         setTimeout(() => {
           router.push("/login")
         }, 2000);
