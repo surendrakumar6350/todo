@@ -6,14 +6,18 @@ import { ToastContainer, toast } from 'react-toastify';
 import { logout } from '@/helper/logoutfunction/logout';
 import 'react-toastify/dist/ReactToastify.css';
 import { httpAxios } from '@/helper/httpAxios';
+import { findalltask } from '@/helper/findtaskfunction/findusertask';
 
 const page =  () => {
 const [data, setdata] = useState([])
-const findingUserTasks =  ()=> {
-const userTasks = fetch("https://todo-git-master-surendra-kumars-projects.vercel.app/api/findtask").then((Response)=> Response.json()).then((result)=> setdata(result.alltask))
-}
-useEffect(findingUserTasks,[])
 
+const ankit = ()=> {
+  (async()=>{
+ const alltaska = await findalltask();
+ setdata(alltaska.alltask)
+})()
+}
+useEffect(ankit,[])
 
 const logoutr = ()=> {
   (async()=>{
