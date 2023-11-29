@@ -35,7 +35,10 @@ export const page =  () => {
       }
       else if( ress === true) {
         toast("user created now you can login")
-        router.push("/login")
+        setTimeout(() => {
+          router.push("/login")
+        }, 2000);
+        
       }
       
     }

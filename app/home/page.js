@@ -18,12 +18,13 @@ setdata(all.data.alldata)
     <>
     <Nav/>
       {data?.map((e)=> {
-    return <div className="info-bar" key={e._id + "1"} >
-    <div key={e._id + "2"}>
-      <h2 key={e._id + "3"}>{e.title}</h2>
-      <p key={e._id + "4"}>{e.text}</p>
-    </div>
-  </div>
+ return <div className="info-bar" key={e._id + "1"}>
+          <div key={e._id + "2"}>
+            <h2 key={e._id + "3"}>{e.title}</h2>
+            <p key={e._id + "4"}>{e.text}</p>
+          </div>
+          <pre className='name'>By: {e.name}</pre>
+        </div>
 
   })}
   <Footer/>

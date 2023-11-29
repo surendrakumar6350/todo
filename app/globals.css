@@ -545,10 +545,17 @@ img {
     padding: 15px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    margin: 10px 20px;
+    margin: 10px 5px;
     color: #fff; /* Text color */
     display: flex;
     gap: 10vw;
+    position: relative;
+  }
+  .info-bar .name {
+   position:  absolute;
+   right: 5px;
+   bottom: 5px;
+   font-size: 8px;
   }
   .info-bar div {
     width: 60%;
