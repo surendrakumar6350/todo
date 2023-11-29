@@ -15,7 +15,14 @@ const userTasks = fetch("https://todo-git-master-surendra-kumars-projects.vercel
 useEffect(findingUserTasks,[])
 
 
-
+const logoutr = ()=> {
+  (async()=>{
+    await logout()
+    setTimeout(()=>{
+      window.location.reload()
+    }, 1000)
+  })()
+}
   return (
     <>
 <Nav/>
@@ -35,7 +42,7 @@ useEffect(findingUserTasks,[])
 
             <h1 className="profile-user-name">ankit jangir</h1>
 
-            <button onClick={logout} className="btn profile-edit-btn">Log Out</button>
+            <button onClick={logoutr} className="btn profile-edit-btn">Log Out</button>
 
         </div>
 
