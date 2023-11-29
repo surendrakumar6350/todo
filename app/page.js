@@ -18,7 +18,6 @@ const page = () => {
   const log = ()=> {
     router.push("/login")
   }
-
   return (
    <>
    <Nav/>

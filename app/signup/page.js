@@ -34,7 +34,7 @@ export const page =  () => {
         toast("failed to create")
       }
       else if( ress === true) {
-        toast("user created")
+        toast("user created now you can login")
         router.push("/login")
       }
       

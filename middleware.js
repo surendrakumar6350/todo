@@ -9,6 +9,7 @@ export function middleware(request) {
     if(pth) {
     return NextResponse.redirect(new URL('/profile', request.url))
     }
+   
   }
 else {
   const pthd = request.nextUrl.pathname == "/profile" || request.nextUrl.pathname == "/tasks";

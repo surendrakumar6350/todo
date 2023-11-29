@@ -7,10 +7,13 @@ import { logout } from '@/helper/logoutfunction/logout';
 import 'react-toastify/dist/ReactToastify.css';
 import { httpAxios } from '@/helper/httpAxios';
 import { findalltask } from '@/helper/findtaskfunction/findusertask';
+import { username } from '@/helper/findtaskfunction/findingname';
 
 const page =  () => {
 const [data, setdata] = useState([])
-
+const [userkanaam, setuserkanaam] = useState("Loading..")
+const [length, setlength] = useState("0")
+ 
 const ankit = ()=> {
   (async()=>{
  const alltaska = await findalltask();
@@ -27,6 +30,20 @@ const logoutr = ()=> {
     }, 1000)
   })()
 }
+
+const pankaj = ()=> {
+  (async()=>{
+const result = await username();
+setuserkanaam(result)
+  })()
+}
+
+useEffect(pankaj,[])
+useEffect(()=> {
+  setlength(data.length)
+},[data])
+
+
   return (
     <>
 <Nav/>
@@ -44,7 +61,7 @@ const logoutr = ()=> {
 
         <div className="profile-user-settings">
 
-            <h1 className="profile-user-name">ankit jangir</h1>
+            <h1 className="profile-user-name">{userkanaam}</h1>
 
             <button onClick={logoutr} className="btn profile-edit-btn">Log Out</button>
 
@@ -53,23 +70,24 @@ const logoutr = ()=> {
         <div className="profile-stats">
 
             <ul>
-                <li><span className="profile-stat-count">164</span> posts</li>
-                <li><span className="profile-stat-count">188</span> followers</li>
-                <li><span className="profile-stat-count">206</span> following</li>
+                <li><span className="profile-stat-count">{length}</span> posts</li>
+                <li><span className="profile-stat-count">0</span> followers</li>
+                <li><span className="profile-stat-count">0</span> following</li>
             </ul>
 
         </div>
 
         <div className="profile-bio">
 
-            <p><span className="profile-real-name">Jane Doe</span> Lorem ipsum dolor sit, amet consectetur adipisicing elit 📷✈️🏕️</p>
+            <p><span className="profile-real-name">{userkanaam}</span> 🚀 Dreamer | 📚 Eternal Learner | ✨ Explorer of Ideas 
+
+</p>
 
         </div>
 
     </div>
 </div>
 </header>
-
 
   {data?.map((e)=> {
     return <div className="info-bar" key={e._id + "1"} >
