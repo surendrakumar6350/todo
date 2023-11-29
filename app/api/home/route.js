@@ -2,7 +2,7 @@ import { task } from "@/helper/schema";
 import { connectdb } from "@/helper/md";
 import { NextResponse } from "next/server";
 
-export async function GET() {
+export async function POST() {
     try {
        await connectdb();
        const alldata = await task.find({"__v":"0"})
