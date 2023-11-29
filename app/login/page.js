@@ -22,7 +22,7 @@ const page = () => {
             toast("password is too short")
         }
         else {
-            console.log("hjii")
+            console.log("going to call http axios")
         const result = await loginapi(data);
         console.log(result)
         if(result.message == "email not found") {
