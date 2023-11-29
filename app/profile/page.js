@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import Nav from '@/Components/Nav'
 import Footer from '@/Components/Footer'
 import { ToastContainer, toast } from 'react-toastify';
+import { logout } from '@/helper/logoutfunction/logout';
 import 'react-toastify/dist/ReactToastify.css';
 import { httpAxios } from '@/helper/httpAxios';
 
@@ -13,19 +14,7 @@ const userTasks = fetch("https://todo-git-master-surendra-kumars-projects.vercel
 }
 useEffect(findingUserTasks,[])
 
-const logout = async()=> {
-  try{
-  const resultof =  await httpAxios.get("/api/logout")
-  if(resultof.data.success == true) {
-    toast("logout successful")
-  }
-  }
-catch (error) {
-console.log(error)
-toast("error in logout")
-}
 
-}
 
   return (
     <>
