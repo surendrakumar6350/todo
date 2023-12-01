@@ -17,6 +17,7 @@ setdata(all.data.alldata)
   return (
     <>
     <Nav/>
+    
       {data?.map((e)=> {
  return <div className="info-bar" key={e._id + "1"}>
           <div key={e._id + "2"}>
@@ -25,8 +26,8 @@ setdata(all.data.alldata)
           </div>
           <pre className='name'>By: {e.name}</pre>
         </div>
-
   })}
+
   <Footer/>
     </>
   )

@@ -3,13 +3,14 @@ import Nav from '@/Components/Nav'
 import Footer from '@/Components/Footer'
 
 const page = () => {
+  
   return (
     <>
     
 <Nav/>
     <section>
         <h2>1. Introduction</h2>
-        <p>Welcome to [Your Website Name], a sophisticated todo adding website designed to streamline your task management experience. This Privacy Policy aims to provide comprehensive insights into how we collect, use, and protect your personal information.</p>
+        <p> sophisticated todo adding website designed to streamline your task management experience. This Privacy Policy aims to provide comprehensive insights into how we collect, use, and protect your personal information.</p>
 
         <h2>2. Information Collection and Usage</h2>
         <p>We collect various types of information when you use our website, including personal and non-personal details. Personal information may include your name, email address, and other identifiable data you voluntarily provide. Non-personal information encompasses technical details such as IP addresses, browser types, and usage patterns, utilized for analytics and service improvement.</p>
