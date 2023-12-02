@@ -52,6 +52,7 @@ export async function POST(request) {
                   <p style="color: #666;">Best regards,<br>surendra kumar</p>
               </div>`, 
                 });
+               return info
               }
               await connectdb();
        const newotp = new otp({
@@ -59,15 +60,17 @@ export async function POST(request) {
         otp: pass,
        });
        const ohk =  await newotp.save();
-              main().catch((error)=> {
+        const rr =   await main().catch((error)=> {
                 return NextResponse.json({
                     success: false
                 })
               })
-
+            
               return NextResponse.json({
                 success: true,
-                otpid: ohk._id
+                otpid: ohk._id,
+                message: rr.messageId
+                
             })
 
 
