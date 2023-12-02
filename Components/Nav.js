@@ -28,13 +28,13 @@ const Nav = () => {
     <Image src={logo} alt="Logo" className="logo" />
     <div className="optionswith">
       <Link href="/">Home</Link>
-      <Link href="/tasks">New task</Link>
+      <Link href="/tasks">New Post</Link>
       <Link href="/profile">My Profile</Link>
       <Link href="/privacy-and-policy">privacy and policy</Link>
       <CiMenuBurger onClick={show} className="iconreact" />
       <ul id="ulkiid">
         <li><Link href="/home">Home</Link></li>
-        <li><Link href="/tasks">New task</Link></li>
+        <li><Link href="/tasks">New Post</Link></li>
         <li><Link href="/profile">My Profile</Link></li>
         <li><Link href="/privacy-and-policy">privacy and policy</Link></li>
       </ul>

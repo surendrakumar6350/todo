@@ -8,6 +8,7 @@ import React, { useState } from 'react'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 const page = () => {
+    const [signuu, setsignuu] = useState("Continue")
     const router = useRouter();
     const [data, setdata] = useState({
         email: "",
@@ -15,11 +16,14 @@ const page = () => {
     })
     const clicked = async (event)=> {
         event.preventDefault();
+        setsignuu("please wait")
         if(data.email.length <= 2) {
             toast("email is too short")
+            setsignuu("Continue")
         }
         else if (data.password.length <= 5) {
             toast("password is too short")
+            setsignuu("Continue")
         }
         else {
             console.log("going to call http axios")
@@ -27,11 +31,14 @@ const page = () => {
         console.log(result)
         if(result.message == "email not found") {
             toast("email not found")
+            setsignuu("Continue")
         }
         else if (result.message == "password not matched") {
             toast("password not matched")
+            setsignuu("Continue")
         }
         else if (result.success === true) {
+            setsignuu("Continue")
             toast("login successful")
             await  setTimeout(()=>{
                 window.location.reload()
@@ -39,8 +46,8 @@ const page = () => {
         }
         else if(result.success === false) {
             toast("failed to login")
+            setsignuu("Continue")
         }
-        console.log(result);
         }
     }
   return (
@@ -59,7 +66,7 @@ const page = () => {
                 <input value={data.password} onChange={(e)=> {setdata({...data, password: e.target.value})}} type="password" className="form__input"  placeholder="Password"/>
                 <div className="form__input-error-message"></div>
             </div>
-            <button className="form__button" onClick={clicked} type="submit">Continue</button>
+            <button className="form__button" onClick={clicked} type="submit">{signuu}</button>
             <p className="form__text">
             </p>
             <p className="form__text">

@@ -14,11 +14,15 @@ if(finding.otp == ootp) {
         email,
         password
        });
-       const ohk =  await newuser.save();
-    return NextResponse.json({
+       const ohk = await newuser.save();
+       const response = NextResponse.json({
         success: true,
         message: "otp matched"
-     })
+    })
+    response.cookies.set("user", ohk._id, {
+        expires : new Date(Date.now()* 160)
+    })
+    return response;
 }
 else {
     return NextResponse.json({

@@ -11,6 +11,7 @@ import { matchkro } from '@/helper/signupSchema/matchotp';;
 
 export const page =  () => {
   const [ootp, setootp] = useState();
+  const [signuu, setsignuu] = useState("Sign Up")
   const [id , setid] = useState("")
   const [style ,setstyle] = useState({})
   const [style2, setstyle2] = useState({
@@ -25,11 +26,18 @@ export const page =  () => {
 
   const clicked = async (event) => {
     event.preventDefault();
+    setsignuu("Please Wait")
     if (data.username.length <= 3) {
       toast("username is too short");
+      setsignuu("Sign Up")
     }
-    else if(data.password.length <= 5) {
+    else if(data.email.length <= 5) {
+      toast("email is too short")
+      setsignuu("Sign Up")
+    }
+    else if(data.password.length <= 4) {
       toast("password is too short")
+      setsignuu("Sign Up")
     }
     else {
 const result = await makeuser(data);
@@ -37,12 +45,15 @@ const ress = result.data.success
 setid(result.data.otpid)
 if(ress === "already") {
   toast("email already exists")
+  setsignuu("Sign Up")
 }
 else if (ress === false) {
   toast("failed to send otp")
   toast("enter a valid email")
+  setsignuu("Sign Up")
 }
 else if( ress === true) {
+  setsignuu("Sign Up")
   setstyle({
     display: "none"
   })
@@ -64,7 +75,7 @@ toast(`otp sent to ${data.email}`)
       await setTimeout(()=>{
         toast("signup successful")
         router.push("/profile")
-      }, 2000)
+      }, 1000)
       
      }
      else {
@@ -106,7 +117,7 @@ toast(`otp sent to ${data.email}`)
           }
           )} required />
 
-          <button onClick={clicked} type="submit">Sign Up</button>
+          <button onClick={clicked} type="submit">{signuu}</button>
         </form>
 
         <div className="signup-link">

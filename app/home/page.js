@@ -5,10 +5,11 @@ import Nav from '@/Components/Nav'
 import Footer from '@/Components/Footer'
 const page = () => {
   const [data, setdata] = useState([])
-
+ const [dataloding, setdataloding] = useState("Please Wait....")
   const rahul = ()=> {
     (async()=> {
 const all = await allUsersTasks();
+setdataloding("")
 setdata(all.data.alldata)
     })()
   }
@@ -27,7 +28,7 @@ setdata(all.data.alldata)
           <pre className='name'>By: {e.name}</pre>
         </div>
   })}
-
+{dataloding}
   <Footer/>
     </>
   )

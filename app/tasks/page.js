@@ -8,6 +8,7 @@ import { addtask } from '@/helper/apicall'
 
 
 const page = () => {
+  const [text, settext] = useState("Submit")
   const [task, settask] = useState({
     title:"",
     text:""
@@ -15,11 +16,14 @@ const page = () => {
 
   const submit = async (event)=> {
     event.preventDefault();
+    settext("Please Wait")
 if(task.title.length <=  3) {
   toast("title is too short");
+  settext("Submit")
 }
 else if (task.text.length <= 5) {
   toast("text box is too short");
+  settext("Submit")
 }
 else {
     const result = await addtask(task);
@@ -29,6 +33,7 @@ else {
         text:""
       });
       toast(`posted ${task.title}`);
+      settext("Submit")
     }
   }
   }
@@ -49,7 +54,7 @@ else {
       text: e.target.value
     })} required></textarea>
 
-    <button onClick={submit} type="submit">Submit</button>
+    <button onClick={submit} type="submit">{text}</button>
     
   </form>
 
