@@ -7,7 +7,11 @@ import { useRouter } from 'next/navigation';
 import React, { useState } from 'react'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+
+
+
 const page = () => {
+   
     const [signuu, setsignuu] = useState("Continue")
     const router = useRouter();
     const [data, setdata] = useState({
@@ -73,7 +77,19 @@ const page = () => {
                 <Link className="form__link" href="/signup" id="linkCreateAccount">Don't have an account? Create account</Link>
             </p>
         </form>
-       
+
+
+        <div className="login-container">
+        <h2>Login with Social Media</h2>
+        <a href="/api/auth/login" className="social-login-btn facebook-btn">
+            Login with Facebook
+        </a>
+        <a href="/api/auth/login" className="social-login-btn google-btn">
+            Login with Google
+        </a>
+    </div>
+
+
     </div>
  <Footer/>
     

@@ -6,7 +6,10 @@ const signupSchema = new Schema({
         requird: true
     },
     email: String,
-    password: String
+    password: String,
+    name:String,
+    picture: String,
+    sub: String
 });
 
 export const signup = mongoose.models.signup || mongoose.model("signup", signupSchema);

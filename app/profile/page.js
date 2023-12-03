@@ -8,6 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { httpAxios } from '@/helper/httpAxios';
 import { findalltask } from '@/helper/findtaskfunction/findusertask';
 import { username } from '@/helper/findtaskfunction/findingname';
+import { logoutsocial } from '@/helper/logoutfunction/logoutsocial';
 
 const page =  () => {
 const [data, setdata] = useState([])
@@ -18,6 +19,14 @@ const ankit = ()=> {
   (async()=>{
  const alltaska = await findalltask();
  setdata(alltaska.alltask)
+
+ const kk = await logoutsocial();
+ if(kk) {
+  console.log("auth token deleted")
+ }
+ else {
+  console.log("failed to delete auth token")
+ }
 })()
 }
 useEffect(ankit,[])
