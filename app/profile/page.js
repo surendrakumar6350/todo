@@ -13,8 +13,12 @@ import { logoutsocial } from '@/helper/logoutfunction/logoutsocial';
 const page =  () => {
 const [data, setdata] = useState([])
 const [userkanaam, setuserkanaam] = useState("Loading..")
+const [piclink, setpiclink] = useState("https://img.freepik.com/free-photo/user-profile-icon-front-side_187299-39596.jpg?size=338&ext=jpg&ga=GA1.1.1803636316.1701216000&semt=ais")
 const [length, setlength] = useState("0")
  
+
+
+
 const ankit = ()=> {
   (async()=>{
  const alltaska = await findalltask();
@@ -31,6 +35,21 @@ const ankit = ()=> {
 }
 useEffect(ankit,[])
 
+
+
+const pankaj = ()=> {
+  (async()=>{
+const result = await username();
+setuserkanaam(result.name)
+setpiclink(result.picture)
+  })()
+}
+useEffect(pankaj,[])
+useEffect(()=> {
+  setlength(data.length)
+},[data])
+
+
 const logoutr = ()=> {
   (async()=>{
     await logout()
@@ -39,19 +58,6 @@ const logoutr = ()=> {
     }, 1000)
   })()
 }
-
-const pankaj = ()=> {
-  (async()=>{
-const result = await username();
-setuserkanaam(result)
-  })()
-}
-
-useEffect(pankaj,[])
-useEffect(()=> {
-  setlength(data.length)
-},[data])
-
 
   return (
     <>
@@ -64,7 +70,7 @@ useEffect(()=> {
 
         <div className="profile-image">
 
-            <img src="https://img.freepik.com/free-photo/user-profile-icon-front-side_187299-39596.jpg?size=338&ext=jpg&ga=GA1.1.1803636316.1701216000&semt=ais" alt=""/>
+            <img src={piclink} alt=""/>
 
         </div>
 
