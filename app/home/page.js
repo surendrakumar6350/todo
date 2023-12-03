@@ -5,16 +5,23 @@ import Nav from '@/Components/Nav'
 import Footer from '@/Components/Footer'
 const page = () => {
   const [data, setdata] = useState([])
- const [dataloding, setdataloding] = useState("Please Wait....")
+ const [dataloding, setdataloding] = useState({
+  display: "block"
+ })
   const rahul = ()=> {
-    (async()=> {
-const all = await allUsersTasks();
-setdataloding("")
-setdata(all.data.alldata)
-    })()
+    setTimeout(() => {
+      (async()=> {
+        const all = await allUsersTasks();
+        setdataloding({
+          display: "none"
+        })
+        setdata(all.data.alldata)
+            })()
+    }, 2000);
   }
-
   useEffect(rahul,[])
+
+
   return (
     <>
     <Nav/>
@@ -28,7 +35,17 @@ setdata(all.data.alldata)
           <pre className='name'>By: {e.name}</pre>
         </div>
   })}
-{dataloding}
+
+
+<div id="load" style={dataloding}>
+  <div>G</div>
+  <div>N</div>
+  <div>I</div>
+  <div>D</div>
+  <div>A</div>
+  <div>O</div>
+  <div>L</div>
+</div>
   <Footer/>
     </>
   )
