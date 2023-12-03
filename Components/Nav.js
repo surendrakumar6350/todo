@@ -26,6 +26,7 @@ const Nav = () => {
     <>
     <nav>
     <Image src={logo} alt="Logo" className="logo" />
+    <img src="https://static.wikia.nocookie.net/6a181c72-e8bf-419b-b4db-18fd56a0eb60"  width="80px" />
     <div className="optionswith">
       <Link href="/">Home</Link>
       <Link href="/tasks">New Post</Link>

@@ -98,20 +98,20 @@ toast(`otp sent to ${data.email}`)
         <h2>Sign Up</h2>
         <form method="post">
           <label htmlFor="username">Username</label>
-          <input value={data.username} type="text" id="username" name="username" onChange={(e) => setdata({
+          <input value={data.username} type="text" placeholder='Username' id="username" name="username" onChange={(e) => setdata({
             ...data,
             username: e.target.value
           })} required />
 
           <label htmlFor="email">Email</label>
-          <input value={data.email} type="email" id="email" name="email" onChange={(e) => setdata({
+          <input value={data.email} type="email" placeholder='Email' id="email" name="email" onChange={(e) => setdata({
             ...data,
             email: e.target.value
           }
           )} required />
 
           <label htmlFor="password">Password</label>
-          <input value={data.password} type="password" id="password" name="password" onChange={(e) => setdata({
+          <input value={data.password} type="password" placeholder='Password' id="password" name="password" onChange={(e) => setdata({
             ...data,
             password: e.target.value
           }
@@ -125,14 +125,10 @@ toast(`otp sent to ${data.email}`)
         </div>
 
         <div className="login-container">
-        <h2>signup with Social Media</h2>
         <a href="/api/auth/login" className="social-login-btn facebook-btn">
-            Login with Facebook
+            Login with Google/Facebook
         </a>
-        <a href="/api/auth/login" className="social-login-btn google-btn">
-            Login with Google
-        </a>
-        </div>
+    </div>
 
       </div>
 

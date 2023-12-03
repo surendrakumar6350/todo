@@ -80,12 +80,8 @@ const page = () => {
 
 
         <div className="login-container">
-        <h2>Login with Social Media</h2>
         <a href="/api/auth/login" className="social-login-btn facebook-btn">
-            Login with Facebook
-        </a>
-        <a href="/api/auth/login" className="social-login-btn google-btn">
-            Login with Google
+            Login with Google/Facebook
         </a>
     </div>
 
