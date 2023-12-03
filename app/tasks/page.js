@@ -41,7 +41,7 @@ else {
     <>
     <Nav/>
     
-    <form method='post'>
+    <form className='formkaa' method='post'>
     <label htmlFor="title">Title:</label>
     <input type="text" id="title"  value={task.title} name="title" placeholder='Title' onChange={(e)=> settask({
       ...task,
