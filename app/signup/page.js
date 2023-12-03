@@ -123,6 +123,17 @@ toast(`otp sent to ${data.email}`)
         <div className="signup-link">
           Already have an account? <Link href="/login">Log In</Link>
         </div>
+
+        <div className="login-container">
+        <h2>signup with Social Media</h2>
+        <a href="/api/auth/login" className="social-login-btn facebook-btn">
+            Login with Facebook
+        </a>
+        <a href="/api/auth/login" className="social-login-btn google-btn">
+            Login with Google
+        </a>
+        </div>
+
       </div>
 
 

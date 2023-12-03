@@ -872,7 +872,8 @@ button:hover {
 
 .signup-link {
     text-align: center;
-    margin-top: 20px;
+    margin-top: 10px;
+    margin-bottom: 8px;
 }
 
 .signup-link a {
