@@ -27,7 +27,7 @@ const page = () => {
   
    
   const clicked = ()=> {
-    router.push("/tasks")
+    router.push("/home")
   }
   const sig = ()=> {
     router.push("/signup")
