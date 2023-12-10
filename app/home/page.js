@@ -6,7 +6,7 @@ import Footer from '@/Components/Footer'
 const page = () => {
   const [data, setdata] = useState([])
  const [dataloding, setdataloding] = useState({
-  display: "block"
+  display: "flex"
  })
   const rahul = ()=> {
     setTimeout(() => {
@@ -36,16 +36,10 @@ const page = () => {
         </div>
   })}
 
-
-<div id="load" style={dataloding}>
-  <div>G</div>
-  <div>N</div>
-  <div>I</div>
-  <div>D</div>
-  <div>A</div>
-  <div>O</div>
-  <div>L</div>
+<div className='animation' style={dataloding}>
+<div class="lds-roller" ><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
 </div>
+      
   <Footer/>
     </>
   )

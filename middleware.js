@@ -4,8 +4,6 @@ import { NextResponse } from 'next/server'
 // This function can be marked `async` if using `await` inside
 export function middleware(request) {
   const cookiesss = request.cookies.get("user")?.value;
-  const cookiess = request.cookies.get("pin")?.value;
-  if(cookiess) {
   if(cookiesss) {
     const pth = request.nextUrl.pathname == "/signup" || request.nextUrl.pathname == "/login";
     if(pth) {
@@ -20,11 +18,6 @@ else {
   }
 }
   }
-  else {
-    return NextResponse.redirect(new URL('/enterpin', request.url))
-  }
-
-}
 
 export const config = {
   matcher: ['/signup','/login','/tasks','/profile', '/home']

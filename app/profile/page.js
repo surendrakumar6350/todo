@@ -5,10 +5,10 @@ import Footer from '@/Components/Footer'
 import { ToastContainer, toast } from 'react-toastify';
 import { logout } from '@/helper/logoutfunction/logout';
 import 'react-toastify/dist/ReactToastify.css';
-import { httpAxios } from '@/helper/httpAxios';
 import { findalltask } from '@/helper/findtaskfunction/findusertask';
 import { username } from '@/helper/findtaskfunction/findingname';
 import { logoutsocial } from '@/helper/logoutfunction/logoutsocial';
+import { Deletebutton } from '@/Components/Deletebutton';
 
 const page =  () => {
 const [data, setdata] = useState([])
@@ -59,6 +59,14 @@ const logoutr = ()=> {
   })()
 }
 
+const deletepost = (id)=> {
+setdata((prev) => prev.filter((todo) => todo._id !== id))
+toast("Deleted Successfully!!!")
+}
+const Notdeleted = ()=> {
+toast("Error in Post Deleting..")
+}
+console.log(data)
   return (
     <>
 <Nav/>
@@ -110,11 +118,11 @@ const logoutr = ()=> {
       <h2 key={e._id + "3"}>{e.title}</h2>
       <p key={e._id + "4"}>{e.text}</p>
     </div>
+    <Deletebutton Notdeleted={Notdeleted} delete={deletepost} id={e._id}/>
   </div>
 
   })}
 <Footer/>
-
     </>
   )
 }
