@@ -544,22 +544,25 @@ img {
 
 .info-bar {
     background-color: #3498db; /* Bar background color */
-    padding: 15px;
+    padding: 10px 13px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     margin: 10px 5px;
     color: #fff; /* Text color */
     display: flex;
     align-items: center;
+    justify-content: space-between;
     gap: 10vw;
     position: relative;
+    overflow: hidden;
   }
   
   .info-bar .name {
-   position:  absolute;
-   right: 5px;
-   bottom: 5px;
-   font-size: 8px;
+   font-size: 70%;
+  }
+  .homediv {
+    height: 70%;
+    width: 30%;
   }
   .info-bar div {
     width: 60%;
@@ -1299,3 +1302,16 @@ label {
     height: 125px;
   }
 }  
+
+.homepic {
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+    height: 100%;
+    border-radius: 8px;
+}
+.homebtn {
+    height: 50px;
+    width: 50px;
+    
+}
