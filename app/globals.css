@@ -1309,6 +1309,7 @@ label {
     margin: 0px;
     height: 100%;
     border-radius: 8px;
+    background-color: #dadada;
 }
 .homebtn {
     height: 50px;
