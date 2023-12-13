@@ -547,7 +547,7 @@ img {
     padding: 10px 13px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    margin: 10px 5px;
+    margin: 5px 5px 2px 5px;
     color: #fff; /* Text color */
     display: flex;
     align-items: center;

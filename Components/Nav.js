@@ -37,6 +37,7 @@ const Nav = () => {
         <li><Link href="/home">Home</Link></li>
         <li><Link href="/tasks">New Post</Link></li>
         <li><Link href="/profile">My Profile</Link></li>
+        <li><Link href="/editprofile">Edit Profile</Link></li>
         <li><Link href="/privacy-and-policy">privacy and policy</Link></li>
       </ul>
     </div>

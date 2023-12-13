@@ -4,6 +4,8 @@ import { allUsersTasks } from '@/helper/homefunction/homes'
 import Nav from '@/Components/Nav'
 import Footer from '@/Components/Footer'
 import Click from './Click'
+import LikeCommentSection from '@/Components/LikeAndComment/LikeAndComment'
+
 const page = () => {
   const [data, setdata] = useState([])
  const [dataloding, setdataloding] = useState({
@@ -19,7 +21,7 @@ const page = () => {
         const alll = await all.data.alldata.reverse();
         setdata(alll)
             })()
-    }, 800);
+    }, 500);
   }
   useEffect(rahul,[])
 
@@ -29,7 +31,9 @@ const page = () => {
     <Nav/>
     
       {data?.map((e)=> {
- return <div style={{padding: "0px 10px"}} className="info-bar" key={e._id + "1"}> 
+ return <div style={{marginBottom: "30px"}}> 
+  
+  <div style={{padding: "0px 10px"}} className="info-bar" key={e._id + "1"}> 
           <div key={e._id + "2"}>
             <h2 key={e._id + "3"}>{e.title}</h2>
             <p key={e._id + "4"}>{e.text}</p>
@@ -37,14 +41,17 @@ const page = () => {
           <div className='homediv' style={{width: '60px'}}>
           <Click uerid={e.userid}/>
           <pre className='name'>By: {e.name}</pre>
-          </div>
+          </div>  
+        </div>
+
+        <LikeCommentSection key={e._id} data={{...e}}/>
         </div>
   })}
 
 <div className='animation' style={dataloding}>
 <div className="lds-roller" ><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
 </div>
-      
+ 
   <Footer/>
     </>
   )
