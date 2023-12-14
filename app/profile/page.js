@@ -9,7 +9,7 @@ import { findalltask } from '@/helper/findtaskfunction/findusertask';
 import { username } from '@/helper/findtaskfunction/findingname';
 import { logoutsocial } from '@/helper/logoutfunction/logoutsocial';
 import { Deletebutton } from '@/Components/Deletebutton';
-
+import LikeCommentSection from '@/Components/LikeAndComment/LikeAndComment';
 const page =  () => {
 const [data, setdata] = useState([])
 const [userkanaam, setuserkanaam] = useState("Loading..")
@@ -77,8 +77,8 @@ console.log(data)
     <div className="profile">
 
         <div className="profile-image">
+<div className='setpic' style={{backgroundImage: `url('${piclink}')`, borderRadius: "50%", backgroundPosition: "center", backgroundSize: "cover"}}></div>
 
-            <img src={piclink} alt=""/>
 
         </div>
 
@@ -113,14 +113,15 @@ console.log(data)
 </header>
 
   {data?.map((e)=> {
-    return <div className="info-bar" key={e._id + "1"} >
+    return <div style={{marginBottom: "30px"}}><div className="info-bar" key={e._id + "1"} >
     <div key={e._id + "2"}>
       <h2 key={e._id + "3"}>{e.title}</h2>
       <p key={e._id + "4"}>{e.text}</p>
     </div>
     <Deletebutton Notdeleted={Notdeleted} delete={deletepost} id={e._id}/>
   </div>
-
+  <LikeCommentSection key={e._id} data={{...e}}/>
+  </div>
   })}
 <Footer/>
     </>

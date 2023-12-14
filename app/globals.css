@@ -1316,3 +1316,14 @@ label {
     width: 50px;
     
 }
+
+.setpic {
+    height: 100px;
+     width: 100px;
+}
+@media (min-width: 640px) {
+    .setpic {
+        height: 300px;
+     width: 300px;
+    }
+}

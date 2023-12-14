@@ -36,8 +36,6 @@ else {
  }
 })()
    }
-
-   
    else {
     toast("ERRoR..")
     setprocess("upload")

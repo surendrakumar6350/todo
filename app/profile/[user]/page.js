@@ -5,6 +5,7 @@ import Footer from '@/Components/Footer'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { finduser } from '@/helper/userprofile/finduser';
+import LikeCommentSection from '@/Components/LikeAndComment/LikeAndComment';
 
 const page =  ({params}) => {
 
@@ -34,6 +35,7 @@ useEffect(fnc,[])
   return (
     <>
 <Nav/>
+<div style={{background: "#dadada"}}>
 <header>
 <ToastContainer/>
 <div className="container">
@@ -42,7 +44,7 @@ useEffect(fnc,[])
 
         <div className="profile-image">
 
-            <img src={piclink} alt=""/>
+        <div className='setpic' style={{backgroundImage: `url('${piclink}')`, borderRadius: "50%", backgroundPosition: "center", backgroundSize: "cover"}}></div>
 
         </div>
 
@@ -72,14 +74,17 @@ useEffect(fnc,[])
 </header>
 
   {data?.map((e)=> {
-    return <div className="info-bar" key={e._id + "1"} >
+    return <div style={{marginBottom: "30px"}}><div className="info-bar" key={e._id + "1"} >
     <div key={e._id + "2"}>
       <h2 key={e._id + "3"}>{e.title}</h2>
       <p key={e._id + "4"}>{e.text}</p>
     </div>
   </div>
+  <LikeCommentSection bc={"#dadada"} key={e._id} data={{...e}}/>
+  </div>
   })}
 
+</div>
 
 <Footer/>
     </>

@@ -5,8 +5,8 @@ import { connectdb } from "@/helper/md";
 export async function POST(request) {
     const useridd = await request.cookies.get("user")
     try {
-    if(useridd.value) {
-        const userid = useridd.value
+    if(useridd?.value) {
+        const userid = useridd?.value
         const {postid} = await request.json();
         await connectdb();
         const newlike = await Likes.deleteOne({userid, postid})

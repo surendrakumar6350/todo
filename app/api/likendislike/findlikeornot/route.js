@@ -6,8 +6,8 @@ import { NextResponse } from "next/server";
 export async function POST(request) {
     try {
         const useridd = await request.cookies.get("user")
-        if(useridd.value) {
-            const userid = useridd.value
+        if(useridd?.value) {
+            const userid = useridd?.value
             const {postid} = await request.json();
             await connectdb();
             const ohk = await Likes.findOne({ $and: [ { userid }, { postid } ] })

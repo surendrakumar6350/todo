@@ -8,7 +8,7 @@ import { likefinder } from '@/helper/LikesSchema/likefinder';
 import { findalllike } from '@/helper/LikesSchema/alllikess/findalllike';
 
 
-const LikeCommentSection = ({data}) => {
+const LikeCommentSection = ({data, bc}) => {
     const postid = data._id;
     const [display, setdisplay] = useState(false)
     const [errorr, seterrorr] = useState("")
@@ -28,6 +28,7 @@ if(res.success) {
   setlike(true)
 }
 else {
+  setlike((pre)=> !pre)
   seterrorr("ERRoR!! login first")
   setTimeout(()=> {
 seterrorr("")
@@ -44,6 +45,7 @@ seterrorr("")
         setlike(false)
       }
       else {
+        setlike((pre)=> !pre)
         seterrorr("ERRoR!! try again")
         setTimeout(()=> {
       seterrorr("")
@@ -71,15 +73,13 @@ const likkk = await findalllike({postid})
     <>
   <div style={{zIndex: "20", background: "white", display: `${ff}`,position: "absolute", height: "400px", width: "80%", border: "1px solid", overflow: "scroll"}}>
   </div>
-    <div style={{padding: '0px 5px', background: '#f0f0f0' }}>
-        <div style={{display: 'flex',  color: 'white',background: "#fafafa", marginRight: '10px' }}>
+    <div style={{padding: '0px 5px', background: `#f0f0f0` }}>
+        <div style={{display: 'flex',  color: 'white',background: `${bc ? bc : "white"}`, marginRight: '10px' }}>
         <button onClick={()=> {
 return like ? falselike() : trueLike()
         }} style={{position: "relative", background: `${like ? "red" : "#3498db"}`,fontSize:"28px", color: 'white', padding: '2px 10px',marginRight: "40px", cursor: 'pointer' }}>
       <FcLikePlaceholder />
-      <p onClick={()=> {
-        setff("block")
-      }} style={{fontSize:"12px", lineHeight: "10px", textAlign: "center", margin: "0px"}}>Likes: {count}</p>
+      <p  style={{fontSize:"12px", lineHeight: "10px", textAlign: "center", margin: "0px"}}>Likes: {count}</p>
       </button> 
       
       <button
