@@ -2,7 +2,7 @@
 import { useState } from 'react'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import { uploadnewpic } from '@/helper/LikesSchema/updatepic';
 
 export function UploadForm() {
   const [file, setFile] = useState()
@@ -11,23 +11,41 @@ export function UploadForm() {
   const onSubmit = async (e) => {
     e.preventDefault()
     setprocess("Please Wait..")
-   
-      const data = new FormData()
-      data.set('file', file)
-      
 
-      const res = await fetch('api/upload', {
+      const data = new FormData()
+      data.append('file', file)
+      data.append("upload_preset","pwjilpw7")
+      data.append("cloud_name","drlyu0rbn")
+
+      const res = await fetch('https://api.cloudinary.com/v1_1/drlyu0rbn/image/upload', {
         method: 'POST',
         body: data
       })
    const result = await res.json()
-   setprocess("upload")
-   if(result.success) {
-    toast("Profile Photo Changed")
+   
+   if(result.url) {
+(async()=> {
+ const ans = await uploadnewpic({newurl: result.url})
+if(ans.success) {
+  toast("Profile Photo Changed")
+  setprocess("upload")
+}
+else {
+  toast(`ERRoR..     ${ans.message}`)
+    setprocess("upload")
+ }
+})()
    }
+
+   
    else {
     toast("ERRoR..")
-   }
+    setprocess("upload")
+  }
+  
+ 
+
+
   }
   
 
