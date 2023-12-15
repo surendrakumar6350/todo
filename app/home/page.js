@@ -5,8 +5,9 @@ import Nav from '@/Components/Nav'
 import Footer from '@/Components/Footer'
 import Click from './Click'
 import LikeCommentSection from '@/Components/LikeAndComment/LikeAndComment'
-
+import { useRouter } from 'next/navigation';
 const page = () => {
+  const router = useRouter();
   const [data, setdata] = useState([])
  const [dataloding, setdataloding] = useState({
   display: "flex"
@@ -33,7 +34,9 @@ const page = () => {
       {data?.map((e)=> {
  return <div style={{marginBottom: "30px"}}> 
   
-  <div style={{padding: "0px 10px"}} className="info-bar" key={e._id + "1"}> 
+  <div onClick={()=> {
+    router.push(`/profile/${e.userid}`)
+  }} style={{padding: "0px 10px", cursor: "pointer"}} className="info-bar" key={e._id + "1"}> 
           <div key={e._id + "2"}>
             <h2 key={e._id + "3"}>{e.title}</h2>
             <p key={e._id + "4"}>{e.text}</p>

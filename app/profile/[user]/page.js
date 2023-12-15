@@ -21,7 +21,7 @@ const result = await finduser({id: userid})
 const user = result.user
 const usertask = result.usertask
 
-setdata(usertask)
+setdata(usertask.reverse())
 setuserkanaam(user.username)
 setpiclink(user.picture || "https://img.freepik.com/free-photo/user-profile-icon-front-side_187299-39596.jpg?size=338&ext=jpg&ga=GA1.1.1803636316.1701216000&semt=ais")
 setlength(usertask.length)

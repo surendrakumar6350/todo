@@ -24,7 +24,7 @@ const [length, setlength] = useState("0")
 const ankit = ()=> {
   (async()=>{
  const alltaska = await findalltask();
- setdata(alltaska.alltask)
+ setdata(alltaska.alltask.reverse())
 
  const kk = await logoutsocial();
  if(kk) {

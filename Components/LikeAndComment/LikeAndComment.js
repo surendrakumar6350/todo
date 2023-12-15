@@ -9,6 +9,7 @@ import { findalllike } from '@/helper/LikesSchema/alllikess/findalllike';
 import { FcLike } from "react-icons/fc";
 
 
+
 const LikeCommentSection = ({data, bc}) => {
     const postid = data._id;
     const [display, setdisplay] = useState(false)
@@ -19,15 +20,11 @@ const LikeCommentSection = ({data, bc}) => {
   const [ff, setff] = useState("none")
 
 
-  
+
 
 
   const trueLike = () => {
     (async()=>{
-      document.querySelector(".pankajbhai").style.fontSize = "40px"
-      setTimeout(()=> {
-        document.querySelector(".pankajbhai").style.fontSize = "28px"
-      }, 550)
       setlike((pre)=> !pre)
 const res = await likerr({postid})
 if(res.success) {
@@ -79,7 +76,7 @@ const likkk = await findalllike({postid})
   </div>
     <div style={{padding: '0px 5px', background: `${bc ? "#dadada" : "#fafafa"}` }}>
         <div style={{display: 'flex',  color: 'white',background: `${bc ? bc : "#fafafa"}`, marginRight: '10px' }}>
-        <button className='pankajbhai' onClick={()=> {
+        <button onClick={()=> {
 return like ? falselike() : trueLike()
         }} style={{position: "relative", background:  "#3498db",fontSize:"28px", color: 'white', padding: '2px 10px',marginRight: "40px", cursor: 'pointer', height: "50px" }}>
       
