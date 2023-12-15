@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react'
 import Nav from '@/Components/Nav'
 import Footer from '@/Components/Footer'
-import { ToastContainer, toast } from 'react-toastify';
+import { Toaster, toast } from 'sonner';
 import 'react-toastify/dist/ReactToastify.css';
 import { finduser } from '@/helper/userprofile/finduser';
 import LikeCommentSection from '@/Components/LikeAndComment/LikeAndComment';
@@ -36,7 +36,7 @@ useEffect(fnc,[])
 <Nav/>
 <div style={{background: "#dadada"}}>
 <header>
-<ToastContainer/>
+<Toaster/>
 <div className="container">
 
     <div className="profile">

@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react'
 import Nav from '@/Components/Nav'
 import Footer from '@/Components/Footer'
-import { ToastContainer, toast } from 'react-toastify';
+import { Toaster, toast } from 'sonner';
 import { logout } from '@/helper/logoutfunction/logout';
 import 'react-toastify/dist/ReactToastify.css';
 import { findalltask } from '@/helper/findtaskfunction/findusertask';
@@ -77,7 +77,7 @@ const editprofile = ()=> {
     <>
 <Nav/>
 <header>
-<ToastContainer/>
+<Toaster/>
 <div className="container">
 
     <div className="profile">

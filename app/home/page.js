@@ -6,6 +6,8 @@ import Footer from '@/Components/Footer'
 import Click from './Click'
 import LikeCommentSection from '@/Components/LikeAndComment/LikeAndComment'
 import { useRouter } from 'next/navigation';
+import { Toaster, toast } from 'sonner';
+
 const page = () => {
   const router = useRouter();
   const [data, setdata] = useState([])
@@ -30,7 +32,7 @@ const page = () => {
   return (
     <>
     <Nav/>
-    
+    <Toaster />
       {data?.map((e)=> {
  return <div style={{marginBottom: "30px"}}> 
   

@@ -1,6 +1,6 @@
 import axios from "axios";
 export const httpAxios = axios.create({
-    baseURL:'https://todo-beta-indol.vercel.app'
+    baseURL:'http://localhost:3000'
 
     // https://todo-beta-indol.vercel.app
     // http://localhost:3000
