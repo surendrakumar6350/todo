@@ -24,7 +24,10 @@ const Click = (props) => {
 
   return (
     <>
-    <button className='homebtn' onClick={clicked}><img className='homepic' src={piclink}></img></button>
+    <button className='homebtn' onClick={clicked}>
+      {/* <img className='homepic' src={piclink}></img> */}
+      <div className='homepic' style={{backgroundImage: `url(${piclink})`, width: "100%", backgroundPosition: "center", backgroundSize: "cover", backgroundRepeat: "no-repeat"}}></div>
+    </button>
     </>
   )
 }

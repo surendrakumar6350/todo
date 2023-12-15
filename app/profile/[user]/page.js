@@ -31,7 +31,6 @@ useEffect(fnc,[])
 
 
 
-
   return (
     <>
 <Nav/>
@@ -72,7 +71,7 @@ useEffect(fnc,[])
     </div>
 </div>
 </header>
-
+<div style={{background: "#dadada"}}>
   {data?.map((e)=> {
     return <div style={{marginBottom: "30px"}}><div className="info-bar" key={e._id + "1"} >
     <div key={e._id + "2"}>
@@ -85,8 +84,8 @@ useEffect(fnc,[])
   })}
 
 </div>
-
 <Footer/>
+</div>
     </>
   )
 }

@@ -10,7 +10,9 @@ import { username } from '@/helper/findtaskfunction/findingname';
 import { logoutsocial } from '@/helper/logoutfunction/logoutsocial';
 import { Deletebutton } from '@/Components/Deletebutton';
 import LikeCommentSection from '@/Components/LikeAndComment/LikeAndComment';
+import { useRouter } from 'next/navigation';
 const page =  () => {
+  const router = useRouter();
 const [data, setdata] = useState([])
 const [userkanaam, setuserkanaam] = useState("Loading..")
 const [piclink, setpiclink] = useState("")
@@ -67,6 +69,10 @@ const Notdeleted = ()=> {
 toast("Error in Post Deleting..")
 }
 console.log(data)
+
+const editprofile = ()=> {
+  router.push("/editprofile")
+}
   return (
     <>
 <Nav/>
@@ -87,6 +93,7 @@ console.log(data)
             <h1 className="profile-user-name">{userkanaam}</h1>
 
             <button onClick={logoutr} className="btn profile-edit-btn">Log Out</button>
+            <button onClick={editprofile} className="btn profile-edit-btn">Edit Profile</button>
 
         </div>
 
@@ -123,7 +130,7 @@ console.log(data)
   <LikeCommentSection key={e._id} data={{...e}}/>
   </div>
   })}
-<Footer/>
+<Footer />
     </>
   )
 }

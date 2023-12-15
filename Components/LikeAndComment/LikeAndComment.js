@@ -6,6 +6,7 @@ import { likerr } from '@/helper/LikesSchema/Likerr';
 import { dislikerr } from '@/helper/LikesSchema/Likerr';
 import { likefinder } from '@/helper/LikesSchema/likefinder';
 import { findalllike } from '@/helper/LikesSchema/alllikess/findalllike';
+import { FcLike } from "react-icons/fc";
 
 
 const LikeCommentSection = ({data, bc}) => {
@@ -17,11 +18,16 @@ const LikeCommentSection = ({data, bc}) => {
   const [count, setcount] = useState()
   const [ff, setff] = useState("none")
 
+
   
 
 
   const trueLike = () => {
     (async()=>{
+      document.querySelector(".pankajbhai").style.fontSize = "40px"
+      setTimeout(()=> {
+        document.querySelector(".pankajbhai").style.fontSize = "28px"
+      }, 550)
       setlike((pre)=> !pre)
 const res = await likerr({postid})
 if(res.success) {
@@ -67,18 +73,17 @@ const likkk = await findalllike({postid})
 })()
 },[like])
 
-
-
   return (
     <>
   <div style={{zIndex: "20", background: "white", display: `${ff}`,position: "absolute", height: "400px", width: "80%", border: "1px solid", overflow: "scroll"}}>
   </div>
-    <div style={{padding: '0px 5px', background: `#f0f0f0` }}>
-        <div style={{display: 'flex',  color: 'white',background: `${bc ? bc : "white"}`, marginRight: '10px' }}>
-        <button onClick={()=> {
+    <div style={{padding: '0px 5px', background: `${bc ? "#dadada" : "#fafafa"}` }}>
+        <div style={{display: 'flex',  color: 'white',background: `${bc ? bc : "#fafafa"}`, marginRight: '10px' }}>
+        <button className='pankajbhai' onClick={()=> {
 return like ? falselike() : trueLike()
-        }} style={{position: "relative", background: `${like ? "red" : "#3498db"}`,fontSize:"28px", color: 'white', padding: '2px 10px',marginRight: "40px", cursor: 'pointer' }}>
-      <FcLikePlaceholder />
+        }} style={{position: "relative", background:  "#3498db",fontSize:"28px", color: 'white', padding: '2px 10px',marginRight: "40px", cursor: 'pointer', height: "50px" }}>
+      
+     {like ? <FcLike/> : <FcLikePlaceholder />}
       <p  style={{fontSize:"12px", lineHeight: "10px", textAlign: "center", margin: "0px"}}>Likes: {count}</p>
       </button> 
       
