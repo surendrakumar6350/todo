@@ -94,7 +94,7 @@ const LikeCommentSection = ({ data, bc }) => {
             style={{ background: '#3498db', transform: "translate(8px,0px)", margin: "0px", fontSize: "20px", color: 'white', padding: '2px 3px', cursor: 'pointer' }}
           >
             <FaComment style={{ marginBottom: "1px", fontSize: "24px" }} />
-            <p style={{ fontSize: "10px", lineHeight: "10px", textAlign: "center", margin: "0px" }}>Total Comments: 0</p>
+            <p style={{ fontSize: "10px", lineHeight: "10px", textAlign: "center", margin: "0px" }}>Total Comments: {data.comment.length}</p>
           </button>
         </div>
         {errorr}
@@ -102,9 +102,9 @@ const LikeCommentSection = ({ data, bc }) => {
 
         <div style={{ display: `${display ? "block" : "none"}` }}>
           <div style={{ marginTop: '20px' }}>
-            <textarea
+            <textarea 
               placeholder="Add a comment..."
-              style={{ width: '100%', padding: '10px', marginBottom: '10px' }}
+              style={{ width: '100%', padding: '10px', marginBottom: '10px', fontFamily: "sans-serif" }}
               onChange={(e) => {
                 setmessage(e.target.value)
               }}
@@ -119,6 +119,7 @@ const LikeCommentSection = ({ data, bc }) => {
                  setuploading("Submit")
                  if(ressponse.success) {
                   toast("Comment Uploaded")
+                  setmessage("")
                  }
                  else {
                   toast(`${ressponse?.message}`)
@@ -139,7 +140,18 @@ const LikeCommentSection = ({ data, bc }) => {
           <div style={{ marginTop: '20px', color: 'blue', fontSize: '18px' }}>
             Comments:
             <ul>
+<div style={{width: "100%"}}>
+{data.comment.map((e)=> {
+  return <div style={{width: "100%", height: "80px",  display: "flex"}}>
+    <div style={{width: "60px", height: "60px",borderRadius: "50%", backgroundImage: `url('${e.photo}')`, backgroundSize: "cover"}}></div>
+    <div style={{display: "flex", flexDirection: "column", marginLeft: "10px", marginTop: "5px"}}>
+      <p style={{padding: "0px", margin: "0px", fontSize: "15px"}}>{e.name}</p>
+      <h3 style={{color: "black",padding: "0px", margin: "0px", fontSize: "10px"}}>{e.comment}</h3>
+    </div>
+  </div>
+})}
 
+</div>
             </ul>
           </div>
         </div>

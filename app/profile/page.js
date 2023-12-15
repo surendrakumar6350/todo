@@ -11,20 +11,25 @@ import { logoutsocial } from '@/helper/logoutfunction/logoutsocial';
 import { Deletebutton } from '@/Components/Deletebutton';
 import LikeCommentSection from '@/Components/LikeAndComment/LikeAndComment';
 import { useRouter } from 'next/navigation';
+import { findcookies, following } from '@/helper/LikesSchema/FollowSchema/following';
+import { fullo } from '@/helper/LikesSchema/FollowSchema/fullo';
 const page =  () => {
   const router = useRouter();
 const [data, setdata] = useState([])
 const [userkanaam, setuserkanaam] = useState("Loading..")
 const [piclink, setpiclink] = useState("")
 const [length, setlength] = useState("0")
- 
+ const [profileid, setprofileid] = useState()
+ const [followingg, setfollowingg] = useState(0)
+  const [fulloo, setfulloo] = useState(0)
 
 
 
 const ankit = ()=> {
   (async()=>{
  const alltaska = await findalltask();
- setdata(alltaska.alltask.reverse())
+setdata(alltaska.alltask.reverse());
+
 
  const kk = await logoutsocial();
  if(kk) {
@@ -68,11 +73,24 @@ toast("Deleted Successfully!!!")
 const Notdeleted = ()=> {
 toast("Error in Post Deleting..")
 }
-console.log(data)
+
 
 const editprofile = ()=> {
   router.push("/editprofile")
 }
+
+useEffect(()=> {
+  (async()=>{
+    const dfd = await findcookies();
+    if(dfd.success) {
+    setfollowingg(dfd.following.length)
+    setfulloo(dfd.follower.length)
+  
+    }
+    
+    })()
+},[])
+
   return (
     <>
 <Nav/>
@@ -101,8 +119,8 @@ const editprofile = ()=> {
 
             <ul>
                 <li><span className="profile-stat-count">{length}</span> posts</li>
-                <li><span className="profile-stat-count">0</span> followers</li>
-                <li><span className="profile-stat-count">0</span> following</li>
+                <li><span className="profile-stat-count">{fulloo}</span> followers</li>
+                <li><span className="profile-stat-count">{followingg}</span> following</li>
             </ul>
 
         </div>

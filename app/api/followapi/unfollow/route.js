@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { Likes } from "@/helper/LikesSchema/LikesSchema";
+import { follow } from "@/helper/LikesSchema/FollowSchema/followschema";
 import { connectdb } from "@/helper/md";
 
 export async function POST(request) {
@@ -7,9 +7,9 @@ export async function POST(request) {
     try {
     if(useridd?.value) {
         const userid = useridd?.value
-        const {postid} = await request.json();
+        const {profileid} = await request.json();
         await connectdb();
-        const newlike = await Likes.deleteOne({ $and: [ { userid }, { postid } ] })
+        const newlike = await follow.deleteOne({ $and: [ { userid }, { profileid } ] })
         console.log(newlike)
 
     return NextResponse.json({

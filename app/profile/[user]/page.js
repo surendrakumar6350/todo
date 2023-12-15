@@ -6,6 +6,11 @@ import { Toaster, toast } from 'sonner';
 import 'react-toastify/dist/ReactToastify.css';
 import { finduser } from '@/helper/userprofile/finduser';
 import LikeCommentSection from '@/Components/LikeAndComment/LikeAndComment';
+import { followkr } from '@/helper/LikesSchema/FollowSchema/followkr';
+import { foollowcheck } from '@/helper/LikesSchema/FollowSchema/foolowcheck';
+import { unfollowkr } from '@/helper/LikesSchema/FollowSchema/unfollowkr';
+import { following } from '@/helper/LikesSchema/FollowSchema/following';
+import { fullo } from '@/helper/LikesSchema/FollowSchema/fullo';
 
 const page =  ({params}) => {
 
@@ -13,6 +18,9 @@ const page =  ({params}) => {
   const [userkanaam, setuserkanaam] = useState("Loading..")
   const [piclink, setpiclink] = useState("")
   const [length, setlength] = useState("0")
+  const [allready, setallready] = useState(false)
+  const [followingg, setfollowingg] = useState(0)
+  const [fulloo, setfulloo] = useState(0)
    
 const userid = params.user;
 const fnc = ()=> {
@@ -30,6 +38,57 @@ setlength(usertask.length)
 useEffect(fnc,[])
 
 
+
+useEffect(()=> {
+(async()=>{
+
+const resss = await foollowcheck({profileid: userid})
+if(resss.success) {
+  setallready(true)
+}
+})()
+},[])
+
+
+
+useEffect(()=> {
+  (async()=>{
+  const fd = await following({profileid: userid})
+  setfollowingg(fd?.message.length)
+  
+  
+  const fff = await fullo({profileid: userid})
+  setfulloo(fff.message.length)
+  
+  
+  })()
+  },[allready])
+
+
+const follow1 = ()=> {
+  (async()=> {
+   const ans = await followkr({profileid: userid})
+   if(ans.success) {
+    setallready(true)
+   }
+   else {
+    toast(`${ans.message}`)
+   }
+})()
+}
+
+
+const follow2 = ()=> {
+  (async()=> {
+   const ans = await unfollowkr({profileid: userid})
+   if(ans.success) {
+    setallready(false)
+   }
+   else {
+    toast(`${ans.message}`)
+   }
+})()
+}
 
   return (
     <>
@@ -50,6 +109,9 @@ useEffect(fnc,[])
         <div className="profile-user-settings">
 
             <h1 className="profile-user-name">{userkanaam}</h1>
+            <button onClick={()=> {
+             return allready ? follow2() : follow1()
+            }} className="btn profile-edit-btn" style={{background: "#6cf16c", border: "1px solid blue"}}>{allready ? "Unfollow" : "Follow"}</button>
 
         </div>
 
@@ -57,8 +119,8 @@ useEffect(fnc,[])
 
             <ul>
                 <li><span className="profile-stat-count">{length}</span> posts</li>
-                <li><span className="profile-stat-count">0</span> followers</li>
-                <li><span className="profile-stat-count">0</span> following</li>
+                <li><span className="profile-stat-count">{fulloo}</span> followers</li>
+                <li><span className="profile-stat-count">{followingg}</span> following</li>
             </ul>
 
         </div>
