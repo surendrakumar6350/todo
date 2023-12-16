@@ -15,11 +15,11 @@ if(userid) {
 const finduer = await signup.findById({_id: userid})
 const photo = finduer.picture || "https://img.freepik.com/free-photo/user-profile-icon-front-side_187299-39596.jpg?size=338&ext=jpg&ga=GA1.1.1803636316.1701216000&semt=ais";
 const name = finduer.username
-
+const notify = "Not current details may be changed"
 
 const post = await task.findOne({_id: postid})
 const commet = post.comment
-const newcommet = [...commet, {userid, comment, photo: photo, name: name}]
+const newcommet = [...commet, {userid, comment, photo: photo, name: name, notify}]
  await task.updateOne({_id: postid},{$set:{comment: newcommet}})
  return NextResponse.json({
     success: true

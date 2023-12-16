@@ -9,11 +9,14 @@ import { findalllike } from '@/helper/LikesSchema/alllikess/findalllike';
 import { FcLike } from "react-icons/fc";
 import { createcomments } from '@/helper/axioscalles/createtaskcomment';
 import { Toaster, toast } from 'sonner';
+import { useRouter } from 'next/navigation';
+import Commentdetails from './Commentdetails';
+import { findbyidd } from '@/helper/userprofile/findtaskbyidd';
 
 
-
-const LikeCommentSection = ({ data, bc }) => {
-  const postid = data._id;
+const LikeCommentSection = ({data, bc }) => {
+  const router = useRouter();
+  const postid = data?._id;
   const [display, setdisplay] = useState(false)
   const [errorr, seterrorr] = useState("")
   const [like, setlike] = useState(false)
@@ -21,9 +24,18 @@ const LikeCommentSection = ({ data, bc }) => {
   const [count, setcount] = useState()
   const [ff, setff] = useState("none")
   const [uploading, setuploading] = useState("Submit")
+  const [allcomment, setallcomment] = useState()
 
+useEffect(()=> {
+  (async()=> {
+const hii = await findbyidd({postid})
+setallcomment(hii.allcomments.reverse())
+  })()
+},[uploading])
 
-
+  const redirecttoprofile = (userid) => {
+    router.push(`/profile/${userid}`)
+  }
 
 
   const trueLike = () => {
@@ -94,7 +106,7 @@ const LikeCommentSection = ({ data, bc }) => {
             style={{ background: '#3498db', transform: "translate(8px,0px)", margin: "0px", fontSize: "20px", color: 'white', padding: '2px 3px', cursor: 'pointer' }}
           >
             <FaComment style={{ marginBottom: "1px", fontSize: "24px" }} />
-            <p style={{ fontSize: "10px", lineHeight: "10px", textAlign: "center", margin: "0px" }}>Total Comments: {data.comment.length}</p>
+            <p style={{ fontSize: "10px", lineHeight: "10px", textAlign: "center", margin: "0px" }}>Total Comments: {allcomment?.length}</p>
           </button>
         </div>
         {errorr}
@@ -138,16 +150,14 @@ const LikeCommentSection = ({ data, bc }) => {
           </div>
 
           <div style={{ marginTop: '20px', color: 'blue', fontSize: '18px' }}>
-            Comments:
+            {/* Comments: */}
             <ul>
 <div style={{width: "100%"}}>
-{data.comment.map((e)=> {
-  return <div style={{width: "100%", height: "80px",  display: "flex"}}>
-    <div style={{width: "60px", height: "60px",borderRadius: "50%", backgroundImage: `url('${e.photo}')`, backgroundSize: "cover"}}></div>
-    <div style={{display: "flex", flexDirection: "column", marginLeft: "10px", marginTop: "5px"}}>
-      <p style={{padding: "0px", margin: "0px", fontSize: "15px"}}>{e.name}</p>
-      <h3 style={{color: "black",padding: "0px", margin: "0px", fontSize: "10px"}}>{e.comment}</h3>
-    </div>
+{allcomment?.map((e)=> {
+  return <div style={{width: "100%", height: "80px",  display: "flex", cursor: "pointer"}} onClick={()=> {
+    redirecttoprofile(e.userid)
+  }}>
+    <Commentdetails key={e.userid} props={e}/>
   </div>
 })}
 

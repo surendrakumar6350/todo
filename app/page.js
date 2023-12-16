@@ -7,6 +7,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useUser } from '@auth0/nextjs-auth0/client';
 import { sociallogin } from '@/helper/homefunction/sociallogin'
+import Image from 'next/image'
 
 
 const page = () => {
@@ -46,6 +47,7 @@ const page = () => {
         <button onClick={sig}>Sign Up</button>
         <button onClick={log}>Log In</button>
     </section>
+
    <Footer/>
    </>
   )
